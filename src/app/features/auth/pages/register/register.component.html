@@ -1,0 +1,28 @@
+<form [formGroup]="registerForm"  id="register_form">
+  <div>
+  <label for="lastname">Nom : </label>
+  <input id="lastname" name="lastname" type="text" placeholder="Nom" formControlName="lastname" />
+    </div>
+    <div>
+  <label for="firstname">Prénom</label>
+  <input id="firstname" name="firstname" type="text" placeholder="Prénom" formControlName="firstname" required />
+    </div>
+  <div>
+  <label for="email">email</label>
+  <input id="email" name="email" type="email" placeholder="email" formControlName="email" required />
+  </div>
+    <div>
+    <label for="password">Mot de passe</label>
+  <input id="password" name="password" type="password" placeholder="Mot de passe" formControlName="password" required />
+    </div>
+
+  <div>
+    <label for="birthDate">Date de naissance</label>
+   <input id="birthDate" name="birthDate" type="date" placeholder="Date de naissance" formControlName="birthDate" required />
+</div>
+  <div>
+    <label for="expiryDate">Date d'expiration</label>
+  <input id="expiryDate" name="expiryDate" type="date" placeholder="Date d'expiration" formControlName="expiryDate" required />
+</div>
+  <button type="submit">S'enregistrer</button>
+</form>

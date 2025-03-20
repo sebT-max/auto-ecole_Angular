@@ -1,0 +1,34 @@
+<header [class.scrolled]="isScrolled">
+  <div class="flexCenter" id="star_trip_header">
+  <div routerLink="/" class="yesteryear-regular" id="logo">Star Trip</div>
+  @if(!userConnected()){
+    <button routerLink="/">Accueil</button>
+    <button routerLink="journey/all">Nos voyages</button>
+    <button routerLink="auth/login">SignIn</button>
+    <button routerLink="auth/register">SignUp</button>
+
+  }@else{
+    @if(userConnected()?.role?.name === 'ADMIN'){
+      <button routerLink="/">Accueil</button>
+      <button routerLink="bookings/all">Réservations clients</button>
+      <button routerLink="journey/create">Création voyage</button>
+      <hr>
+      <button routerLink="planet/create">Création planète</button>
+      <hr>
+      <button routerLink="activity/create">Création activité</button>
+      <button (click)="logout()">DÉCONNEXION</button>
+    }
+    @if(userConnected()?.role?.name === 'CLIENT'){
+      <button routerLink="/">Accueil</button>
+      <button routerLink="booking/create">J'organise mon voyage</button>
+      <hr>
+      <button routerLink="bookings/me">Mes réservations</button>
+      <hr>
+      <button (click)="logout()">DÉCONNEXION</button>
+    }
+  }
+
+  </div>
+</header>
+
+
