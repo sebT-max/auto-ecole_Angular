@@ -3,27 +3,21 @@
   <div routerLink="/" class="yesteryear-regular" id="logo">Star Trip</div>
   @if(!userConnected()){
     <button routerLink="/">Accueil</button>
-    <button routerLink="journey/all">Nos voyages</button>
+    <button routerLink="stages/all">Nos stages</button>
     <button routerLink="auth/login">SignIn</button>
     <button routerLink="auth/register">SignUp</button>
 
   }@else{
     @if(userConnected()?.role?.name === 'ADMIN'){
       <button routerLink="/">Accueil</button>
-      <button routerLink="bookings/all">Réservations clients</button>
-      <button routerLink="journey/create">Création voyage</button>
+      <button routerLink="stages/all">Nos stages</button>
+      <button routerLink="stage/admin/create">Création stage</button>
       <hr>
-      <button routerLink="planet/create">Création planète</button>
-      <hr>
-      <button routerLink="activity/create">Création activité</button>
       <button (click)="logout()">DÉCONNEXION</button>
     }
-    @if(userConnected()?.role?.name === 'CLIENT'){
+    @if(userConnected()?.role?.name === 'CLIENT' || userConnected()?.role?.name === 'ENTREPRISE' ){
       <button routerLink="/">Accueil</button>
-      <button routerLink="booking/create">J'organise mon voyage</button>
-      <hr>
-      <button routerLink="bookings/me">Mes réservations</button>
-      <hr>
+      <button routerLink="stages/all">Nos stages</button>
       <button (click)="logout()">DÉCONNEXION</button>
     }
   }

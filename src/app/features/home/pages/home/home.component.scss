@@ -1,0 +1,119 @@
+.home_container{
+  padding:40px;
+  width:80%;
+  background: black;
+  margin:0 auto;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  font-family: 'Montserrat', sans-serif;
+
+  p,ul,li{
+    padding: 10px 0px;
+    font-size: 24px;
+    line-height: 66px;
+    text-align:center;
+    margin:40px;
+  }
+  h1,h2,h3,h4{
+    font-size:24px;
+    background: rgba(0, 0, 0, 0.16);
+    text-align: center;
+    height: auto;
+    padding: 10px 0px;
+  }
+  h4{
+    margin:40px;
+    background: rgba(0, 0, 0, 0);
+    font-size:30px;
+  }
+}
+
+.planet-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+
+  div {
+    text-align: center;
+    margin:20px 30px;
+  }
+
+  img{
+    margin:0px;
+  }
+  p{
+    color:white;
+    font-size:36px;
+  }
+}
+
+.text-red {
+  color: #ff4d4d;
+}
+
+.text-yellow {
+  color: #ffcc00;
+}
+
+.text-lightblue {
+  color: #80dfff;
+}
+.home_journeys_catalogue{
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.37);
+  hr{
+    width:50%;
+    background-color: #ffb606;
+    height:2px;
+    margin:0 auto;
+    margin-bottom:20px;
+  }
+  p{
+    color:white;
+    font-size:36px;
+    text-transform: uppercase;
+    font-style:italic;
+    text-align:center;
+    margin:10px;
+  }
+}
+
+.journey_catalogue_button{
+  font-size:30px;
+  padding:40px;
+  text-transform:uppercase;
+  border:5px double whitesmoke;
+  width:auto;
+  margin:0 auto;
+  margin-bottom:50px;
+  background: rgba(0, 0, 0, 0.1215686275);
+  &:hover{
+    background: rgba(0, 0, 0, 0.37);
+  }
+}
+
+#main_title{
+  background:transparent;
+  width:100%;
+  text-align:center;
+  font-size:80px;
+  transform: rotate(-10deg);
+  display: inline-block;
+  border:none;
+}
+
+.booking_button {
+  width: 30%;
+  background: rgba(0, 0, 0, 0.1215686275);
+  color: white;
+  font-size: 30px;
+  border: 3px solid whitesmoke;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.37);
+    border: 3px solid white;
+  }
+}

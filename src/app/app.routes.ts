@@ -40,4 +40,11 @@ export const routes: Routes = [
         (c) => c.RegisterComponent,
       ),
   },
+  {
+    path: 'stages/all',
+    loadComponent: () =>
+      import('./features/auth/pages/register/register.component').then(
+        (c) => c.RegisterComponent,
+      ),
+  },
 ];

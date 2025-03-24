@@ -1,0 +1,22 @@
+<form [formGroup]="companyRegisterForm"  id="register_form">
+
+  <div>
+    <label for="name">Nom de l'entreprise</label>
+    <input id="name" name="companyName" type="text" placeholder="Nom de l'entreprise" formControlName="name" required />
+  </div>
+  <div>
+    <label for="email">email</label>
+    <input id="email" name="email" type="email" placeholder="email" formControlName="email" required />
+  </div>
+  <div>
+    <label for="password">Mot de passe</label>
+    <input id="password" name="password" type="password" placeholder="Mot de passe" formControlName="password" required />
+  </div>
+
+  <div>
+    <label for="telephone">Contact</label>
+    <input id="telephone" name="telephone" type="text" placeholder="n°telephone" formControlName="telephone" required />
+  </div>
+
+  <button type="submit">S'enregistrer</button>
+</form>
