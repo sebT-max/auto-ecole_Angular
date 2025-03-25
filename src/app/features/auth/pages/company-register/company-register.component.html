@@ -1,4 +1,8 @@
-<form [formGroup]="companyRegisterForm"  id="register_form">
+
+<h1>Pour vous inscrire au </h1>
+
+
+<form [formGroup]="companyRegisterForm"  id="company_register_form" (ngSubmit)="handleCompagnyRegisterFormSubmit()">
 
   <div>
     <label for="name">Nom de l'entreprise</label>

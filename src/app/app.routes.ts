@@ -11,6 +11,28 @@ export const routes: Routes = [
         ),
   },
   {
+    path: 'stages-infos',
+    loadComponent:()=>
+    import('./features/stage/pages/infos-stages/infos-stage.component').then
+((c) => c.InfosStageComponent,
+),
+  },
+  /*
+  {
+    path:'b2b',
+  },
+
+  {
+    path: 'qui-sommes-nous ?',
+
+  },
+  {
+    path: 'statistiques-et-législation',
+
+  },
+
+   */
+  {
     path: 'auth/me',
     canActivate: [isConnectedGuard],
     loadComponent: () =>
@@ -34,10 +56,17 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'auth/register',
+    path: 'auth/user/register',
     loadComponent: () =>
       import('./features/auth/pages/register/register.component').then(
         (c) => c.RegisterComponent,
+      ),
+  },
+  {
+    path: 'auth/company/register',
+    loadComponent: () =>
+      import('./features/auth/pages/company-register/company-register.component').then(
+        (c) => c.CompanyRegisterComponent,
       ),
   },
   {
@@ -46,5 +75,5 @@ export const routes: Routes = [
       import('./features/auth/pages/register/register.component').then(
         (c) => c.RegisterComponent,
       ),
-  },
+  }
 ];

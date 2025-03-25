@@ -7,6 +7,7 @@ import { LoginFormModel } from '../models/login-form.model';
 import { API_URL } from '../../../core/constants/api-constant';
 import { UserFormModel } from '../models/user-form.model';
 import { UserResponseModel } from '../models/user-response.model';
+import {EntrepriseRegisterFormModel} from '../models/entreprise-register-form-model';
 
 @Injectable({
   providedIn: 'root',
@@ -38,8 +39,12 @@ export class AuthService {
     this.loadUserRoles();
   }
 
-  register(user: UserFormModel) {
+  register(user: RegisterFormModel) {
     return this._httpClient.post<number>(`${API_URL}user/register`, user);
+  }
+
+  entrepriseRegister(entreprise: EntrepriseRegisterFormModel) {
+    return this._httpClient.post<number>(`${API_URL}entreprise/register`, entreprise);
   }
 
   login(user: LoginFormModel) {
