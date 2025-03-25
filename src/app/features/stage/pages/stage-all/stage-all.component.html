@@ -1,0 +1,12 @@
+<h1>Découvrez nos activités</h1>
+<div class="card-container">
+  @for (stage of stages; track stage.id) {
+
+    <div class="card_stages">
+      <h2>{{ stage.city }}</h2>
+      <p>{{ stage.dateDeStage }}</p>
+      <p>Accès: {{ stage.price }}€/personne</p>
+
+    </div>
+  }
+</div>

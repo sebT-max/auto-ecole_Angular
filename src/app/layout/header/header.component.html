@@ -4,7 +4,7 @@
   @if(!userConnected()){
     <button routerLink="/">Accueil</button>
     <button routerLink="stages/all">Nos stages</button>
-    <button routerLink="stages-infos">Informations générales sur les stages</button>
+    <button routerLink="stages-infos">Informations générales</button>
     <!--
     <button routerLink="b2b">Professionnels</button>
 
@@ -12,7 +12,7 @@
     <button routerLink="qui-sommes-nous ?">Qui nous sommes ? (SEO)</button>
     -->
     <button routerLink="stages/all">Compte client</button>
-
+    <button routerLink="stages/create">Création stage</button>
     <button routerLink="auth/login">SignIn</button>
     <button routerLink="auth/register">SignUp</button>
 
@@ -20,7 +20,6 @@
     @if(userConnected()?.role?.name === 'ADMIN'){
       <button routerLink="/">Accueil</button>
       <button routerLink="stages/all">Nos stages</button>
-      <button routerLink="stage/admin/create">Création stage</button>
       <hr>
       <button (click)="logout()">DÉCONNEXION</button>
     }

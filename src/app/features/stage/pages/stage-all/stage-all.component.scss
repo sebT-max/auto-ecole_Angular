@@ -1,0 +1,11 @@
+.card_stages{
+  background: linear-gradient(135deg, #282828, #374b60, #12aed0);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 80%;
+  color: #fff;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}

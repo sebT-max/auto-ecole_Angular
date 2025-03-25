@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import {HomeComponent} from './features/home/pages/home/home.component';
 import {isConnectedGuard} from './features/auth/guards/is-connected.guard';
+import {StageCreateComponent} from './features/stage/pages/stage-create/stage-create.component';
+import {StageAllComponent} from './features/stage/pages/stage-all/stage-all.component';
 
 export const routes: Routes = [
   {
@@ -72,8 +74,15 @@ export const routes: Routes = [
   {
     path: 'stages/all',
     loadComponent: () =>
-      import('./features/auth/pages/register/register.component').then(
-        (c) => c.RegisterComponent,
+      import('./features/stage/pages/stage-all/stage-all.component').then(
+        (c) => c.StageAllComponent,
+      ),
+  },
+  {
+    path: 'stages/create',
+    loadComponent: () =>
+      import('./features/stage/pages/stage-create/stage-create.component').then(
+        (c) => c.StageCreateComponent,
       ),
   }
 ];
