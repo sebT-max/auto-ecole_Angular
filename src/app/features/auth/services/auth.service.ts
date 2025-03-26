@@ -7,7 +7,7 @@ import { LoginFormModel } from '../models/login-form.model';
 import { API_URL } from '../../../core/constants/api-constant';
 import { UserFormModel } from '../models/user-form.model';
 import { UserResponseModel } from '../models/user-response.model';
-import {EntrepriseRegisterFormModel} from '../models/entreprise-register-form-model';
+import {CompanyRegisterFormModel} from '../models/company-register-form-model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,15 +40,15 @@ export class AuthService {
   }
 
   register(user: RegisterFormModel) {
-    return this._httpClient.post<number>(`${API_URL}user/register`, user);
+    return this._httpClient.post<number>(`${API_URL}users/register`, user);
   }
 
-  entrepriseRegister(entreprise: EntrepriseRegisterFormModel) {
-    return this._httpClient.post<number>(`${API_URL}entreprise/register`, entreprise);
+  entrepriseRegister(entreprise: CompanyRegisterFormModel) {
+    return this._httpClient.post<number>(`${API_URL}company/register`, entreprise);
   }
 
   login(user: LoginFormModel) {
-    return this._httpClient.post<TokenModel>(`${API_URL}user/login`, user).pipe(
+    return this._httpClient.post<TokenModel>(`${API_URL}users/login`, user).pipe(
       tap((resp: TokenModel | null): void => {
         if (resp) {
           this.currentUser.set(resp);

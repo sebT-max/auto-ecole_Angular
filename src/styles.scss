@@ -19,20 +19,19 @@ body{
   background-repeat: no-repeat;
   background-image: url('/bg_acf.webp');
   font-family: 'Montserrat', sans-serif;
-  padding-top: 120px;
+  padding-top: 180px;
+
 }
 
 form{
-  width: 50%;
-  padding: 30px;
-  margin:0 auto;
-  box-shadow:1px 0 1px 1px rgba(0,0,0.1);
+  width: 60%;
+  padding: 20px;
+  margin: 0 auto;
   text-align: center;
-  color:white;
-  background:rgba(0, 0, 0, 0.37);
+  color: white;
+  background: rgb(3 139 159);
 }
 form label{
-
   text-transform:uppercase;
   margin:30px 10px 10px 0px;
   background:transparent
@@ -46,14 +45,12 @@ form div {
 }
 
 form input,select{
-  padding:20px;
+  padding:10px;
   background:whitesmoke;
   font-size: 20px;
+  border-radius:10px;
   &:hover{
     background:white;
-  }
-  &:focus{
-    border:red;
   }
 }
 form textarea{
@@ -219,6 +216,11 @@ h1{
   width:220px;
   margin:8px 0px;
   border-radius:10px;
+}
+
+.bg_white{
+  background:white;
+
 }
 
 

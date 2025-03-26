@@ -2,8 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
-import {UserFormModel} from '../../models/user-form.model';
-import {EntrepriseRegisterFormModel} from '../../models/entreprise-register-form-model';
+import {CompanyRegisterFormModel} from '../../models/company-register-form-model';
 
 @Component({
   selector: 'app-company-register',
@@ -20,34 +19,40 @@ export class CompanyRegisterComponent {
   private readonly _router: Router = inject(Router);
 
   companyRegisterForm: FormGroup;
-  EntrepriseRegisterFormModel!: EntrepriseRegisterFormModel;
+  CompanyRegisterFormModel!: CompanyRegisterFormModel;
 
   constructor() {
     this.companyRegisterForm = this._formBuilder.group({
       name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required,Validators.minLength(6)]],
-      telephone: [null, [Validators.required]]
+      telephone: [null, [Validators.required]],
+      acceptTerms:[null, [Validators.required]],
+      roleId: [3, [Validators.required]]
     });
   }
+
+
   handleCompagnyRegisterFormSubmit(): void {
+    console.log(this.companyRegisterForm.value);
     if(this.companyRegisterForm.invalid){
       console.log("formulaire invalide");
       return;
     }
-    this.EntrepriseRegisterFormModel = {
+    this.CompanyRegisterFormModel = {
       name: this.companyRegisterForm.get('name')!.value,
       email: this.companyRegisterForm.get('email')!.value,
       password: this.companyRegisterForm.get('password')!.value,
-      password_confirmation: this.companyRegisterForm.get('password_confirmation')!.value,
-      telephone: this.companyRegisterForm.get('telephone')!.value
+      telephone: this.companyRegisterForm.get('telephone')!.value,
+      acceptTerms: this.companyRegisterForm.get('acceptTerms')!.value,
+      roleId:3
     };
-    console.log('EntrepriseRegisterFormModel', this.EntrepriseRegisterFormModel);
+    console.log('EntrepriseRegisterFormModel', this.CompanyRegisterFormModel);
 
-    this.$_authService.entrepriseRegister(this.EntrepriseRegisterFormModel).subscribe({
+    this.$_authService.entrepriseRegister(this.CompanyRegisterFormModel).subscribe({
       next: (datas:number) => {
-        console.log('Création du user réussie, voici son Id :', datas);
-        this._router.navigate(['auth/login']);
+        console.log('Création réussie, voici son Id :', datas);
+        this._router.navigate(['']);
       },
       error: (err: Error) => {
         if(err){

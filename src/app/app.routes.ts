@@ -35,6 +35,20 @@ export const routes: Routes = [
 
    */
   {
+    path: 'users/register',
+    loadComponent: () =>
+      import('./features/auth/pages/register/register.component').then(
+        (c) => c.RegisterComponent,
+      ),
+  },
+  {
+    path: 'company/register',
+    loadComponent: () =>
+      import('./features/auth/pages/company-register/company-register.component').then(
+        (c) => c.CompanyRegisterComponent,
+      ),
+  },
+  {
     path: 'auth/me',
     canActivate: [isConnectedGuard],
     loadComponent: () =>
@@ -51,24 +65,10 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'auth/login',
+    path: 'users/login',
     loadComponent: () =>
       import('./features/auth/pages/login/login.component').then(
         (c) => c.LoginComponent,
-      ),
-  },
-  {
-    path: 'auth/user/register',
-    loadComponent: () =>
-      import('./features/auth/pages/register/register.component').then(
-        (c) => c.RegisterComponent,
-      ),
-  },
-  {
-    path: 'auth/company/register',
-    loadComponent: () =>
-      import('./features/auth/pages/company-register/company-register.component').then(
-        (c) => c.CompanyRegisterComponent,
       ),
   },
   {

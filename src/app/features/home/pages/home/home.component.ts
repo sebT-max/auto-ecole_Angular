@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-import {RoleSelectionComponent} from '../../../../role-selection/role-selection.component';
+import {Component, ViewChild} from '@angular/core';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [RoleSelectionComponent],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'], // Correction ici
   standalone: true
 })
-export class HomeComponent {}
+export class HomeComponent {
+}

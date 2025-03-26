@@ -26,38 +26,41 @@ export class RegisterComponent {
 
   constructor() {
     this.registerForm = this._formBuilder.group({
-      gender: [null, [Validators.required]],
-      birthDate: [null, [Validators.required]],
-      telephone: [null, [Validators.required]],
       lastname: [null, [Validators.required]],
       firstname: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]]
+      password: [null, [Validators.required]],
+      birthDate: [null, [Validators.required]],
+      telephone: [null, [Validators.required]],
+      acceptTerms: [null, [Validators.required]],
+      roleId:[1, [Validators.required]]
     });
   }
 
-  handleCompagnyRegisterFormSubmit(): void {
+
+  handleRegisterFormSubmit(): void {
+  console.log(this.registerForm.value);
     if(this.registerForm.invalid){
       console.log("formulaire invalide");
       return;
     }
 
     this.registerFormModel = {
-      lastname: this.registerForm.get('nom')!.value,
-      firstname: this.registerForm.get('prénom')!.value,
+      lastname: this.registerForm.get('lastname')!.value,
+      firstname: this.registerForm.get('firstname')!.value,
       email: this.registerForm.get('email')!.value,
       password: this.registerForm.get('password')!.value,
-      password_confirmation: this.registerForm.get('password_confirmation')!.value,
-      gender:this.registerForm.get('sexe')!.value,
-      birthdate:this.registerForm.get('date de naissance')!.value,
-      telephone: this.registerForm.get('telephone')!.value
+      birthdate: this.registerForm.get('birthDate')!.value,
+      telephone: this.registerForm.get('telephone')!.value,
+      acceptTerms: this.registerForm.get('acceptTerms')!.value,
+      roleId: 1
     };
-    console.log('EntrepriseRegisterFormModel', this.registerForm);
+    console.log('registerFormModel', this.registerFormModel);
 
     this.$_authService.register(this.registerFormModel).subscribe({
       next: (datas:number) => {
         console.log('Création du user réussie, voici son Id :', datas);
-        this._router.navigate(['auth/login']);
+        this._router.navigate(['']);
       },
       error: (err: Error) => {
         if(err){
