@@ -1,14 +1,28 @@
-<form [formGroup]="inscriptionCreationForm" (ngSubmit)="handleInscription()">
-  <div>
-    <label for="dateDeInscription">Date d'inscription :</label>
-    <input type="date" id="dateDeInscription" formControlName="dateDeInscription" required>
+<div class="inscription-container">
+  <!-- Formulaire d'inscription -->
+  <form [formGroup]="inscriptionCreationForm" (ngSubmit)="handleInscription()">
+
+    <div>
+      <label for="stageType">Type de Stage</label>
+      <select id="stageType" formControlName="stageType">
+        <option value="" disabled selected>Sélectionner un type de stage</option>
+        <option *ngFor="let type of stageTypes" [value]="type.value">
+          {{ type.label }}
+        </option>
+      </select>
+    </div>
+    <div>
+      <label for="dateDeInscription">Date d'inscription</label>
+      <input id="dateDeInscription" formControlName="dateDeInscription" type="date" required />
+    </div>
+
+    <button type="submit" [disabled]="inscriptionCreationForm.invalid">S'inscrire</button>
+  </form>
+  <!-- Détails du stage -->
+  <div class="stage-details" *ngIf="stageDetails">
+    <h2>Stage à {{ stageDetails.city }}</h2>
+    <p>Arrondissement: {{ stageDetails.arrondissement }}</p>
+    <p>Date: {{ stageDetails.dateDeStage }}</p>
+    <p>Accès: {{ stageDetails.price }}€/personne</p>
   </div>
-
-  <div>
-    <label for="codePromo">Code Promo :</label>
-    <input type="text" id="codePromo" formControlName="codePromo">
-  </div>
-
-  <button type="submit" [disabled]="inscriptionCreationForm.invalid">S'inscrire</button>
-</form>
-
+</div>

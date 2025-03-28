@@ -1,7 +1,7 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {StageService} from '../../services/stage.service';
 import {StageDetailsModel} from '../../models/stage-details-model';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {StageDetailsComponent} from '../stage-details/stage-details.component';
 import {NgIf} from '@angular/common';
 
@@ -20,7 +20,8 @@ export class StageAllComponent implements OnInit {
   stages: StageDetailsModel[] = [];
   selectedStage: StageDetailsModel | null = null;
 
-  constructor(private _stageService: StageService) {}
+  constructor(private _stageService: StageService, private router: Router
+  ) {}
 
   ngOnInit() {
     this._stageService.getAllStage().subscribe({

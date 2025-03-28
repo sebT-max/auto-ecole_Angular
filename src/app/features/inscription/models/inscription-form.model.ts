@@ -1,6 +1,7 @@
 export interface InscriptionFormModel {
-    userId: number;
-    stageId: number;
-    date:string;
-    codePromo: string;
+  userId: number | null;
+  stageId: number | null;
+  date: string;
+  stageType:string | null;
+  //codePromo: string | null;
 }

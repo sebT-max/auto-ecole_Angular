@@ -87,10 +87,17 @@ export const routes: Routes = [
   },
 
   {
-    path: 'inscriptions/create',
+    path: 'inscriptions/create/:id',
     loadComponent: () =>
       import('./features/inscription/pages/inscription-create/inscription-create.component').then(
         (c) => c.InscriptionCreateComponent,
+      ),
+  },
+  {
+    path: 'code-promos/create',
+    loadComponent: () =>
+      import('./features/code-promo/pages/code-promo-create/code-promo-create.component').then(
+        (c) => c.CodePromoCreateComponent,
       ),
   }
 ];
