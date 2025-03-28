@@ -3,11 +3,13 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
 import {CompanyRegisterFormModel} from '../../models/company-register-form-model';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-company-register',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgIf
   ],
   templateUrl: './company-register.component.html',
   styleUrl: './company-register.component.scss'
@@ -20,6 +22,7 @@ export class CompanyRegisterComponent {
 
   companyRegisterForm: FormGroup;
   CompanyRegisterFormModel!: CompanyRegisterFormModel;
+  errorMessage: string | null = null; // Ajout de la gestion d'erreur
 
   constructor() {
     this.companyRegisterForm = this._formBuilder.group({
@@ -52,12 +55,17 @@ export class CompanyRegisterComponent {
     this.$_authService.entrepriseRegister(this.CompanyRegisterFormModel).subscribe({
       next: (datas:number) => {
         console.log('Création réussie, voici son Id :', datas);
+        this.errorMessage = null;
         this._router.navigate(['']);
       },
-      error: (err: Error) => {
-        if(err){
-          console.log("Erreur d'enregistrement");
-          console.log(err);
+      error: (error: any) => {
+        console.error("Erreur d'enregistrement", error);
+
+        // Gestion des erreurs spécifiques
+        if (error.status === 400 && error.error.message === "Email already in use.") {
+          this.errorMessage = "Cet email est déjà utilisé.";
+        } else if (error.status === 500 && error.error.message === "Email already in use.") {
+          this.errorMessage = "Cet email est déjà utilisé.";
         }
       },
     });

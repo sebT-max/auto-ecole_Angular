@@ -1,0 +1,42 @@
+.close_button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.close_button:hover {
+  background-color: darkred;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Assurez-vous qu'il y a un espace entre les cartes */
+}
+
+
+
+.app-stage-details {
+  margin-top: 0px; /* Espacement entre la carte et les détails */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+}
+
+.stage-details{
+  display:flex;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #282828, #374b60, #12aed0);
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 80%;
+  color: #fff;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 1s ease;
+  margin:0 auto;
+}
+

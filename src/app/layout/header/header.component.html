@@ -15,19 +15,42 @@
     <button routerLink="statistiques-et-législation">Statistiques et législation (SEO)</button>
     <button routerLink="qui-sommes-nous ?">Qui nous sommes ? (SEO)</button>
     -->
-    <button routerLink="stages/all">Compte client</button>
-    <button routerLink="stages/create">Création stage</button>
-    <button routerLink="users/login">SignIn</button>
-    <button routerLink="auth/register">SignUp</button>
+    <button routerLink="users/login">Se connecter</button>
+
+    <div class="register-container">
+      <button (click)="toggleModal($event)" class="btn-register">S'inscrire</button>
+      <div *ngIf="showModal" class="modal-container" [class.show]="showAnimation" (click)="$event.stopPropagation()">
+
+      <button (click)="selectType('PARTICULIER', $event)">
+        <a routerLink="users/register" class="btn_register" >Particulier</a>
+      </button>
+      <button (click)="selectType('ENTREPRISE', $event)">
+        <a routerLink="company/register" class="btn_register">Entreprise</a>
+      </button>
+      </div>
+    </div>
+
+    <!--
+    <app-register-modal *ngIf="showModal" (closeModal)="toggleModal()"></app-register-modal>
+    -->
+
 
   }@else{
     @if(userConnected()?.role?.name === 'ADMIN'){
       <button routerLink="stages/all">Nos inscriptions</button>
+      <button routerLink="stages/create">Création stage</button>
       <hr>
       <button (click)="logout()">DÉCONNEXION</button>
     }
-    @if(userConnected()?.role?.name === 'CLIENT' || userConnected()?.role?.name === 'ENTREPRISE' ){
+    @if(userConnected()?.role?.name === 'ENTREPRISE' ){
       <button routerLink="stages/all">Nos stages</button>
+      <button routerLink="stages/all">Mon espace professionnel</button>
+      <button (click)="logout()">DÉCONNEXION</button>
+    }
+    @if(userConnected()?.role?.name === 'PARTICULIER'){
+      <button routerLink="stages/all">Nos stages</button>
+      <button routerLink="stages/all">Mon espace client</button>
+
       <button (click)="logout()">DÉCONNEXION</button>
     }
   }

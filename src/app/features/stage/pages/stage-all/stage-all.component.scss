@@ -1,4 +1,6 @@
 .card_stages{
+  display:flex;
+  justify-content: space-between;
   background: linear-gradient(135deg, #282828, #374b60, #12aed0);
   /* border: 1px solid rgba(255, 255, 255, 0.2); */
   border-radius: 15px;
@@ -9,3 +11,51 @@
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.inscription_button{
+  width:200px;
+  font-size:24px;
+  height:80px;
+  align-items:center;
+  border-radius:10px;
+  background-color:#f8a633;;
+  border:white;
+  color:#2d333b;
+  margin: 0px 12px;
+}
+.details_button{
+  width:200px;
+  font-size:24px;
+  height:80px;
+  align-items:center;
+  border-radius:10px;
+  background-color:#f8a633;;
+  border:white;
+  color:#2d333b;
+  margin:0px 12px;
+}
+.close_button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.close_button:hover {
+  background-color: darkred;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Assurez-vous qu'il y a un espace entre les cartes */
+}
+
+.card_stages {
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-size:20px;
+  margin:0 auto;
+}
+
+
+

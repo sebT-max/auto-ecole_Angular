@@ -4,10 +4,10 @@ import { TokenModel } from '../models/token.model';
 import { RegisterFormModel } from '../models/register-form.model';
 import { Observable, tap } from 'rxjs';
 import { LoginFormModel } from '../models/login-form.model';
-import { API_URL } from '../../../core/constants/api-constant';
 import { UserFormModel } from '../models/user-form.model';
 import { UserResponseModel } from '../models/user-response.model';
 import {CompanyRegisterFormModel} from '../models/company-register-form-model';
+import {API_URL} from '../../../core/constants/api-constant';
 
 @Injectable({
   providedIn: 'root',

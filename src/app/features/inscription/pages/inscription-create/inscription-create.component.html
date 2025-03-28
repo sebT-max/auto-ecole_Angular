@@ -1,0 +1,14 @@
+<form [formGroup]="inscriptionCreationForm" (ngSubmit)="handleInscription()">
+  <div>
+    <label for="dateDeInscription">Date d'inscription :</label>
+    <input type="date" id="dateDeInscription" formControlName="dateDeInscription" required>
+  </div>
+
+  <div>
+    <label for="codePromo">Code Promo :</label>
+    <input type="text" id="codePromo" formControlName="codePromo">
+  </div>
+
+  <button type="submit" [disabled]="inscriptionCreationForm.invalid">S'inscrire</button>
+</form>
+

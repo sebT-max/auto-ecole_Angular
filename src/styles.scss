@@ -17,7 +17,7 @@ body{
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url('/bg_acf.webp');
+  background-image: url('/bg_acf.png');
   font-family: 'Montserrat', sans-serif;
   padding-top: 180px;
 
@@ -29,7 +29,7 @@ form{
   margin: 0 auto;
   text-align: center;
   color: white;
-  background: rgb(3 139 159);
+  background: rgb(20 114 134);
 }
 form label{
   text-transform:uppercase;
@@ -46,9 +46,7 @@ form div {
 
 form input,select{
   padding:10px;
-  background:whitesmoke;
   font-size: 20px;
-  border-radius:10px;
   &:hover{
     background:white;
   }
@@ -221,6 +219,10 @@ h1{
 .bg_white{
   background:white;
 
+}
+
+.btn_register{
+  color:black;
 }
 
 

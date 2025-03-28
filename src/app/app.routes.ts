@@ -84,5 +84,13 @@ export const routes: Routes = [
       import('./features/stage/pages/stage-create/stage-create.component').then(
         (c) => c.StageCreateComponent,
       ),
+  },
+
+  {
+    path: 'inscriptions/create',
+    loadComponent: () =>
+      import('./features/inscription/pages/inscription-create/inscription-create.component').then(
+        (c) => c.InscriptionCreateComponent,
+      ),
   }
 ];

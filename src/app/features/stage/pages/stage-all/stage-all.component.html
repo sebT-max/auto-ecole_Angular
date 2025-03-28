@@ -1,12 +1,27 @@
 <h1>Découvrez nos activités</h1>
 <div class="card-container">
   @for (stage of stages; track stage.id) {
-
     <div class="card_stages">
-      <h2>{{ stage.city }}</h2>
-      <p>{{ stage.dateDeStage }}</p>
-      <p>Accès: {{ stage.price }}€/personne</p>
+      <div>
+        <h2>{{ stage.city }}</h2>
+        <p>Arrondissement: {{ stage!.arrondissement }}</p>
+        <p>{{ stage.dateDeStage }}</p>
+        <p>Accès: {{ stage.price }}€/personne</p>
+      </div>
 
+      <!-- Bouton Détails pour afficher les informations -->
+      <button class="details_button" (click)="selectStage(stage)">
+        Détails
+      </button>
+
+      <!-- Bouton "Je m'inscris" -->
+      <button class="inscription_button" [routerLink]="['/inscriptions/create']">Je m'inscris</button>
+    </div>
+
+    <!-- Affichage des détails en dehors de la carte, sous la carte sélectionnée -->
+    <div *ngIf="selectedStage?.id === stage.id">
+      <app-stage-details [stage]="selectedStage" (close)="closeDetails()"></app-stage-details>
     </div>
   }
 </div>
+
