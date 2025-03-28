@@ -3,14 +3,15 @@ import {StageService} from '../../services/stage.service';
 import {StageDetailsModel} from '../../models/stage-details-model';
 import {Router, RouterLink} from '@angular/router';
 import {StageDetailsComponent} from '../stage-details/stage-details.component';
-import {NgIf} from '@angular/common';
+import {DatePipe, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-stage-all',
   imports: [
     RouterLink,
     StageDetailsComponent,
-    NgIf
+    NgIf,
+    DatePipe
   ],
   templateUrl: './stage-all.component.html',
   styleUrl: './stage-all.component.scss'

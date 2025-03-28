@@ -1,11 +1,12 @@
 
 <div class="stage-details">
-
+  <div class="stage_details_container1">
   <h2>Stage à {{ stage!.city }}</h2>
-  <p>Date: {{ stage!.street }}</p>
+  <p>Rue: {{ stage!.street }}</p>
   <p>Arrondissement: {{ stage!.arrondissement }}</p>
-  <p>Date: {{ stage!.dateDeStage }}</p>
-  <p>Accès: {{ stage!.price }}€/personne</p>
+    <p>Date: {{ stage?.dateDeStage | date:'dd/MM/yyyy' }}</p>
+    <p>Accès: {{ stage!.price }}€/personne</p>
+  </div>
   <button class="close_button" (click)="close.emit()">Fermer</button>
 </div>
 

@@ -1,8 +1,9 @@
-<div class="inscription-container">
+<div class="inscription-continer">
   <!-- Formulaire d'inscription -->
-  <form [formGroup]="inscriptionCreationForm" (ngSubmit)="handleInscription()">
+  <div>
+  <form id="inscription_form" [formGroup]="inscriptionCreationForm" (ngSubmit)="handleInscription()">
 
-    <div>
+
       <label for="stageType">Type de Stage</label>
       <select id="stageType" formControlName="stageType">
         <option value="" disabled selected>Sélectionner un type de stage</option>
@@ -10,17 +11,18 @@
           {{ type.label }}
         </option>
       </select>
-    </div>
-    <div>
-      <label for="dateDeInscription">Date d'inscription</label>
-      <input id="dateDeInscription" formControlName="dateDeInscription" type="date" required />
-    </div>
 
-    <button type="submit" [disabled]="inscriptionCreationForm.invalid">S'inscrire</button>
+      <label for="dateOfInscription">Date d'inscription</label>
+      <input id="dateOfInscription" formControlName="dateOfInscription" type="date" required />
+    <button type="submit">S'inscrire</button>
   </form>
+  </div>
+
+
   <!-- Détails du stage -->
   <div class="stage-details" *ngIf="stageDetails">
     <h2>Stage à {{ stageDetails.city }}</h2>
+    <hr>
     <p>Arrondissement: {{ stageDetails.arrondissement }}</p>
     <p>Date: {{ stageDetails.dateDeStage }}</p>
     <p>Accès: {{ stageDetails.price }}€/personne</p>

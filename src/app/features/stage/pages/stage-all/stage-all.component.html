@@ -5,7 +5,7 @@
       <div>
         <h2>{{ stage.city }}</h2>
         <p>Arrondissement: {{ stage!.arrondissement }}</p>
-        <p>{{ stage.dateDeStage }}</p>
+        <p>{{ stage.dateDeStage| date:'dd/MM/yyyy' }}</p>
         <p>Accès: {{ stage.price }}€/personne</p>
       </div>
 

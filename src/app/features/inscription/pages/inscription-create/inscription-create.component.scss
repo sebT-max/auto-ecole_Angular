@@ -1,19 +1,26 @@
-.inscription-container {
+.inscription-continer {
   display: flex;
+  justify-content: center;
   gap: 20px;
-  margin-top:500px;
+  margin-top:250px;
 }
 
 .stage-details {
-  width: 40%;
+  width: 25%;
   background: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
+  font-size: 32px;
+  line-height: 86px;
 }
 
 form {
-  width: 50%;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width:100%;
+}
+
+#inscription_form{
+
 }

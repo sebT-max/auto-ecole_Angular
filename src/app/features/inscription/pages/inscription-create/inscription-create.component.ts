@@ -14,7 +14,6 @@ import {NgForOf, NgIf} from '@angular/common';
   selector: 'app-inscription-create',
   imports: [
     ReactiveFormsModule,
-    RouterLink,
     NgIf,
     NgForOf
   ],
@@ -62,18 +61,17 @@ export class InscriptionCreateComponent implements OnInit {
       });
     }
 
-    // Créer le formulaire de création d'inscription
+    // Créer le formulaire avec les valeurs par défaut
     this.inscriptionCreationForm = this._fb.group({
-      userId: ['', Validators.required],
-      stageId: ['', Validators.required],
+      userId: [this.currentUser()?.id || '', Validators.required],
+      stageId: [this.stageId || '', Validators.required],
       stageType: ['', Validators.required],
-      dateDeInscription: ['', Validators.required],
-      // codePromo: [null, Validators.required]
+      dateOfInscription: ['', Validators.required],
     });
   }
 
   handleInscription(): void {
-    console.log('Inscription Create', this.inscriptionCreationForm.value);
+    console.log(this.inscriptionCreationForm.value);
 
     if (this.inscriptionCreationForm.invalid) {
       return;
@@ -85,24 +83,28 @@ export class InscriptionCreateComponent implements OnInit {
       return;
     }
 
+    // Assurer que userId et stageId sont bien assignés
+    this.inscriptionCreationForm.patchValue({
+      userId: currentUserValue.id,
+      stageId: this.stageId
+    });
+
     // Créer les données d'inscription à envoyer
     const inscriptionData: InscriptionFormModel = {
-      userId: currentUserValue.id,  // Utilisation du signal currentUser
-      stageId: this.stageId,
-      stageType: this.inscriptionCreationForm.value.stageType,  // Récupérer le type de stage
-
-      date: this.inscriptionCreationForm.value.dateDeInscription
-      // codePromo: this.inscriptionCreationForm.value.codePromo || ''
+      userId: this.inscriptionCreationForm.value.userId,
+      stageId: Number(this.inscriptionCreationForm.value.stageId),
+      stageType: this.inscriptionCreationForm.value.stageType,
+      dateOfInscription: this.inscriptionCreationForm.value.dateOfInscription
     };
 
     // Soumettre l'inscription via le service
     this._inscriptionService.createInscription(inscriptionData).subscribe({
-      next: (resp: InscriptionFormModel) => {
+      next: (resp: InscriptionFormModel):void => {
         // Redirection après inscription réussie
         this._router.navigate(['/stages/all']);
       },
       error: (err) => {
-        console.error('Erreur lors de la création de l\'inscription', err);
+        console.error('Erreur lors de la création de inscription', err);
       }
     });
   }

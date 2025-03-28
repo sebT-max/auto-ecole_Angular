@@ -13,7 +13,7 @@ export class InscriptionService {
   private _httpClient: HttpClient = inject(HttpClient);
 
   createInscription(inscription: InscriptionFormModel) {
-    return this._httpClient.post<InscriptionFormModel>(`${API_URL}/stages/create`, inscription);
+    return this._httpClient.post<InscriptionFormModel>(`${API_URL}inscriptions/create`, inscription);
   }
 }
 
