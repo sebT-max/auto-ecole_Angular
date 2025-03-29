@@ -99,5 +99,12 @@ export const routes: Routes = [
       import('./features/code-promo/pages/code-promo-create/code-promo-create.component').then(
         (c) => c.CodePromoCreateComponent,
       ),
+  },
+  {
+    path: 'dashboard-client',
+    canActivate: [isConnectedGuard],
+    loadComponent:()=>import('./dashboards/client-dashboard/client-dashboard.component').then(
+      (c)=>c.ClientDashboardComponent,
+    )
   }
 ];

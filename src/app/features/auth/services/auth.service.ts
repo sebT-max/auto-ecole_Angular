@@ -74,4 +74,8 @@ export class AuthService {
   getUsers(): Observable<UserResponseModel[]> {
     return this._httpClient.get<UserResponseModel[]>(`${API_URL}/user/all`);
   }
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token'); // Vérifie si un token est présent
+    return !!token; // Retourne `true` si le token existe, sinon `false`
+  }
 }

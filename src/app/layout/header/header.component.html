@@ -1,11 +1,10 @@
 <header [class.scrolled]="isScrolled">
-  <div class="flexCenter">
-
   <div class="logo_header">
     <div routerLink="/" id="logo_acf">
       <div>ACF</div>
     </div>
   </div>
+  <div class="header_nav_links_container">
   @if(!userConnected()){
     <button routerLink="stages/all">Nos stages</button>
     <button routerLink="stages-infos">Informations générales</button>
@@ -50,12 +49,11 @@
     }
     @if(userConnected()?.role?.name === 'PARTICULIER'){
       <button routerLink="stages/all">Nos stages</button>
-      <button routerLink="stages/all">Mon espace client</button>
+      <button routerLink="dashboard-client">Mon espace client</button>
 
       <button (click)="logout()">DÉCONNEXION</button>
     }
   }
-
   </div>
 </header>
 

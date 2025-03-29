@@ -1,7 +1,6 @@
 .home_container{
-
-  padding: 40px;
-  width: 80%;
+  padding: 80px;
+  width: 100%;
   background: rgba(0, 0, 0, 0.37);
   margin: 0 auto;
   color: white;
@@ -9,7 +8,14 @@
   flex-direction: column;
   justify-content: center;
   font-family: "Montserrat", sans-serif;
-
+  div{
+    padding: 0px 0px;
+    font-size: 16px;
+    line-height: 34px;
+    margin: 20px;
+    background: #232832;
+    opacity: 0.9;
+  }
 
   p,ul,li{
     padding: 10px 0px;

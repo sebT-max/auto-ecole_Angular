@@ -1,1 +1,35 @@
-<p>client-dashboard works!</p>
+<div class="dashboard">
+  <h2>Bienvenue sur votre espace client</h2>
+
+  <table *ngIf="inscriptions.length > 0; else noInscriptions">
+    <thead>
+    <tr>
+      <th>Nom du Stage</th>
+      <th>Type</th>
+      <th>Date d'inscription</th>
+      <th>Statut</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let inscription of inscriptions">
+      <td>{{ inscription.stage.nom }}</td>
+      <td>{{ inscription.stageType }}</td>
+      <td>{{ inscription.date | date:'dd/MM/yyyy' }}</td>
+      <td>
+          <span class="badge" [ngClass]="{
+            'badge-success': inscription.status === 'CONFIRMÉ',
+            'badge-warning': inscription.status === 'EN ATTENTE',
+            'badge-danger': inscription.status === 'ANNULÉ'
+          }">
+            {{ inscription.status }}
+          </span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noInscriptions>
+    <p>Aucune inscription trouvée.</p>
+  </ng-template>
+</div>
+

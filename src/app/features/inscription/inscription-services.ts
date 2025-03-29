@@ -4,6 +4,7 @@ import {TokenModel} from '../auth/models/token.model';
 import {StageDetailsModel} from '../stage/models/stage-details-model';
 import {API_URL} from '../../core/constants/api-constant';
 import {InscriptionFormModel} from './models/inscription-form.model';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
@@ -14,6 +15,9 @@ export class InscriptionService {
 
   createInscription(inscription: InscriptionFormModel) {
     return this._httpClient.post<InscriptionFormModel>(`${API_URL}inscriptions/create`, inscription);
+  }
+  getClientInscriptions(): Observable<InscriptionFormModel[]> {
+    return this._httpClient.get<InscriptionFormModel[]>(`${API_URL}inscriptions/me`);
   }
 }
 
