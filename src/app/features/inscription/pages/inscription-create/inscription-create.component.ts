@@ -42,8 +42,15 @@ export class InscriptionCreateComponent implements OnInit {
   ngOnInit(): void {
     // Charger l'utilisateur depuis le localStorage
     const localStorageUser = localStorage.getItem('currentUser');
+    console.log("Token récupéré du localStorage :", localStorageUser);
     if (localStorageUser) {
-      this.currentUser.set(JSON.parse(localStorageUser));
+      try {
+        this.currentUser.set(JSON.parse(localStorageUser));
+        console.log("Token après parsing JSON :", this.currentUser());
+      } catch (error) {
+        console.error("Erreur lors du parsing du token :", error);
+        localStorage.removeItem('currentUser'); // Nettoie le localStorage si le JSON est corrompu
+      }
     }
 
     // Récupérer l'ID du stage depuis l'URL
@@ -67,6 +74,7 @@ export class InscriptionCreateComponent implements OnInit {
       stageId: [this.stageId || '', Validators.required],
       stageType: ['', Validators.required],
       dateOfInscription: ['', Validators.required],
+      statutInscription:['', Validators.required]
     });
   }
 
@@ -94,7 +102,8 @@ export class InscriptionCreateComponent implements OnInit {
       userId: this.inscriptionCreationForm.value.userId,
       stageId: Number(this.inscriptionCreationForm.value.stageId),
       stageType: this.inscriptionCreationForm.value.stageType,
-      dateOfInscription: this.inscriptionCreationForm.value.dateOfInscription
+      dateOfInscription: this.inscriptionCreationForm.value.dateOfInscription,
+      inscriptionStatut: this.inscriptionCreationForm.value.
     };
 
     // Soumettre l'inscription via le service

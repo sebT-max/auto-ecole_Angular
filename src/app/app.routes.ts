@@ -102,7 +102,6 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard-client',
-    canActivate: [isConnectedGuard],
     loadComponent:()=>import('./dashboards/client-dashboard/client-dashboard.component').then(
       (c)=>c.ClientDashboardComponent,
     )

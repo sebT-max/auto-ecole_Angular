@@ -1,10 +1,10 @@
-<div class="dashboard">
+<div class="dashboard_client">
   <h2>Bienvenue sur votre espace client</h2>
 
   <table *ngIf="inscriptions.length > 0; else noInscriptions">
     <thead>
     <tr>
-      <th>Nom du Stage</th>
+      <th>StageId</th>
       <th>Type</th>
       <th>Date d'inscription</th>
       <th>Statut</th>
@@ -12,10 +12,11 @@
     </thead>
     <tbody>
     <tr *ngFor="let inscription of inscriptions">
-      <td>{{ inscription.stage.nom }}</td>
-      <td>{{ inscription.stageType }}</td>
-      <td>{{ inscription.date | date:'dd/MM/yyyy' }}</td>
-      <td>
+      <td>{{ inscription.stageId }}</td>
+      <td>{{ inscription.stageType}}</td>
+      <td>{{ inscription.dateOfInscription| date:'dd/MM/yyyy' }}</td>
+      <td>{{getStatutLabel(inscription.statutInscription)}}</td>
+        <!--
           <span class="badge" [ngClass]="{
             'badge-success': inscription.status === 'CONFIRMÉ',
             'badge-warning': inscription.status === 'EN ATTENTE',
@@ -23,7 +24,7 @@
           }">
             {{ inscription.status }}
           </span>
-      </td>
+          -->
     </tr>
     </tbody>
   </table>
