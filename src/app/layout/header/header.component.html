@@ -17,20 +17,46 @@
     <button routerLink="statistiques-et-législation">Statistiques et législation (SEO)</button>
     <button routerLink="qui-sommes-nous ?">Qui nous sommes ? (SEO)</button>
     -->
-    <button routerLink="users/login">Se connecter</button>
+    <!--<button routerLink="users/login">Se connecter</button>-->
+    <!--<button routerLink="company/login">Se connecter</button>-->
 
-    <div class="register-container">
-      <button (click)="toggleModal($event)" class="btn-register">S'inscrire</button>
-      <div *ngIf="showModal" class="modal-container" [class.show]="showAnimation" (click)="$event.stopPropagation()">
-
-      <button (click)="selectType('PARTICULIER', $event)">
-        <a routerLink="users/register" class="btn_register" >Particulier</a>
-      </button>
-      <button (click)="selectType('ENTREPRISE', $event)">
-        <a routerLink="company/register" class="btn_register">Entreprise</a>
-      </button>
+    <div class="register-container" (mouseover)="openRegisterModal()" (mouseleave)="startCloseRegisterModal()">
+      <button class="btn-register">S'inscrire</button>
+      <div
+        *ngIf="showRegisterModal"
+        class="modal-container"
+        [class.show]="showRegisterAnimation"
+        (mouseover)="cancelCloseRegisterModal()"
+        (mouseleave)="startCloseRegisterModal()"
+      >
+        <button (click)="selectType('PARTICULIER', $event)">
+          <a routerLink="users/register" class="btn_register">Particulier</a>
+        </button>
+        <button (click)="selectType('ENTREPRISE', $event)">
+          <a routerLink="company/register" class="btn_register">Entreprise</a>
+        </button>
       </div>
     </div>
+
+    <div class="login-container" (mouseover)="openLoginModal()" (mouseleave)="startCloseLoginModal()">
+      <button class="btn-login">Se connecter</button>
+      <div
+        *ngIf="showLoginModal"
+        class="modal-container"
+        [class.show]="showLoginAnimation"
+        (mouseover)="cancelCloseLoginModal()"
+        (mouseleave)="startCloseLoginModal()"
+      >
+        <button (click)="selectLoginType('PARTICULIER', $event)">
+          <a routerLink="users/login" class="btn_login">Particulier</a>
+        </button>
+        <button (click)="selectLoginType('ENTREPRISE', $event)">
+          <a routerLink="company/login" class="btn_login">Entreprise</a>
+        </button>
+      </div>
+    </div>
+
+
 
     <!--
     <app-register-modal *ngIf="showModal" (closeModal)="toggleModal()"></app-register-modal>
@@ -38,6 +64,7 @@
 
 
   }@else{
+
     @if(userConnected()?.role?.name === 'ADMIN'){
       <button routerLink="stages/all">Nos stages</button>
       <button routerLink="stages/create">Créer unn stage</button>
@@ -53,7 +80,6 @@
     @if(userConnected()?.role?.name === 'PARTICULIER'){
       <button routerLink="stages/all">Nos stages</button>
       <button routerLink="dashboard-client">Mon espace client</button>
-
       <button (click)="logout()">DÉCONNEXION</button>
     }
   }

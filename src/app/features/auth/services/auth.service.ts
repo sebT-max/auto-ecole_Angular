@@ -92,6 +92,17 @@ export class AuthService {
       }),
     );
   }
+  companyLogin(entreprise: LoginFormModel) {
+    return this._httpClient.post<TokenModel>(`${API_URL}company/login`, entreprise).pipe(
+      tap((resp: TokenModel | null): void => {
+        if (resp) {
+          this.currentUser.set(resp);
+          localStorage.setItem('currentUser', JSON.stringify(resp));
+          // Ne pas stocker le token séparément pour éviter la duplication
+        }
+      }),
+    );
+  }
 
   getUserById(id: number): Observable<UserResponseModel> {
     return this._httpClient.get<UserResponseModel>(

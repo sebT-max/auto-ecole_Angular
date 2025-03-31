@@ -10,4 +10,6 @@ export interface UserResponseModel {
     name: string;
     description: string;
   };
+  type: 'user'; // Ajout du type discriminant
 }
+
