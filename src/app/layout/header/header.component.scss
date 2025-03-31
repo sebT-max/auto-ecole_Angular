@@ -6,7 +6,7 @@ header {
   width: 100%;
   z-index: 1000;
   transition: background-color 0.3s ease;
-  height: 180px;
+  height: 130px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,7 +32,6 @@ header_nav_links_container{
 
 #logo_acf{
   width: auto;
-  height: 200px;
   font-size: 80px;
   border: 1px solid white;
   color: #383f4e;
@@ -40,7 +39,7 @@ header_nav_links_container{
   border-radius: 100px;
   display: flex;
   align-items: center;
-  background: rgb(248 166 51);
+  background: rgb(248, 166, 51);
 }
 
 header button:hover{
