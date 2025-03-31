@@ -45,10 +45,12 @@
       <button (click)="logout()">DÉCONNEXION</button>
     }
     @if(userConnected()?.role?.name === 'ENTREPRISE' ){
+      <button routerLink="stages/all">Nos stages</button>
       <button routerLink="stages/all">Mon espace professionnel</button>
       <button (click)="logout()">DÉCONNEXION</button>
     }
     @if(userConnected()?.role?.name === 'PARTICULIER'){
+      <button routerLink="stages/all">Nos stages</button>
       <button routerLink="dashboard-client">Mon espace client</button>
 
       <button (click)="logout()">DÉCONNEXION</button>

@@ -103,7 +103,7 @@ export class InscriptionCreateComponent implements OnInit {
       stageId: Number(this.inscriptionCreationForm.value.stageId),
       stageType: this.inscriptionCreationForm.value.stageType,
       dateOfInscription: this.inscriptionCreationForm.value.dateOfInscription,
-      inscriptionStatut: this.inscriptionCreationForm.value.
+      inscriptionStatut: this.inscriptionCreationForm.value.inscriptionStatut
     };
 
     // Soumettre l'inscription via le service

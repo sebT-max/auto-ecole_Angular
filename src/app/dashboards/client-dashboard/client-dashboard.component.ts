@@ -19,7 +19,10 @@ import {TokenModel} from '../../features/auth/models/token.model';
 })
 export class ClientDashboardComponent implements OnInit {
   private readonly _inscriptionService = inject(InscriptionService);
+  private readonly _stageService = inject(StageService);
+
   inscriptions: InscriptionFormModel[] = [];
+  stagesDetails: { [key: number]: any } = {}; // Stocke les détails des stages
 
   ngOnInit(): void {
     this.loadInscriptions();
@@ -28,10 +31,32 @@ export class ClientDashboardComponent implements OnInit {
   loadInscriptions(): void {
     this._inscriptionService.getClientInscriptions().subscribe({
       next: (inscriptions) => {
+        console.log("Inscriptions récupérées :", inscriptions);
         this.inscriptions = inscriptions;
+        this.loadStagesDetails(); // Charger les détails des stages après avoir récupéré les inscriptions
+
       },
       error: (err) => {
         console.error('Erreur lors du chargement des inscriptions', err);
+      }
+    });
+  }
+  loadStagesDetails(): void {
+    this.inscriptions.forEach(inscription => {
+      console.log("Traitement de l'inscription :", inscription);
+
+      if (inscription.stageId != null && !this.stagesDetails[inscription.stageId]) {
+        console.log(`Chargement des détails du stage ${inscription.stageId}`);
+        // Vérifie que stageId n'est pas null
+        this._stageService.getStageById(inscription.stageId).subscribe({
+          next: (stage) => {
+            console.log(`Détails du stage ${inscription.stageId} récupérés:`, stage);
+            this.stagesDetails[inscription.stageId!] = stage; // "!" pour assurer TypeScript que ce n'est pas null
+          },
+          error: (err) => {
+            console.error(`Erreur lors du chargement du stage ${inscription.stageId}`, err);
+          }
+        });
       }
     });
   }

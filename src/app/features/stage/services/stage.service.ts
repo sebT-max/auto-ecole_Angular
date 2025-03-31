@@ -38,8 +38,8 @@ export class StageService{
   getAllStage(): Observable<StageDetailsModel[]> {
     return this._httpClient.get<StageDetailsModel[]>(`${API_URL}stages/all`);
   }
-  getStageById(stage:any): Observable<StageDetailsModel> {
-    return this._httpClient.get<StageDetailsModel>(`${API_URL}stages/${stage}`);
+  getStageById(stageId:number): Observable<StageDetailsModel> {
+    return this._httpClient.get<StageDetailsModel>(`${API_URL}stages/${stageId}`);
   }
 
 }
