@@ -12,33 +12,34 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .inscription_button{
-  width:200px;
-  font-size:24px;
-  height:80px;
-  align-items:center;
-  border-radius:10px;
-  background-color:#f8a633;;
-  border:white;
-  color:#2d333b;
-  margin: 0px 12px;
+  width: 200px;
+  font-size: 30px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #f8a633;
+  border: 1px solid white;
+  color: #2d333b;
 }
 .details_button{
-  width:200px;
-  font-size:24px;
-  height:80px;
-  align-items:center;
-  border-radius:10px;
-  background-color:#f8a633;;
-  border:white;
-  color:#2d333b;
-  margin:0px 12px;
+  width: 200px;
+  font-size: 30px;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #f8a633;
+  border: 1px solid white;
+  color: #2d333b;
 }
 .close_button {
   background-color: red;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 16px;
   cursor: pointer;
+  height: 100px;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 24px;
+  border-radius: 4px;
 }
 
 .close_button:hover {

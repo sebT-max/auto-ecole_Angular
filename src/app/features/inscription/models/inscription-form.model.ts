@@ -1,8 +1,10 @@
+import {StageDetailsModel} from '../../stage/models/stage-details-model';
+
 export interface InscriptionFormModel {
   userId: number | null;
   stageId: number | null;
   dateOfInscription: string;
-  stageType:string | null;
+  stageType: string | null;
   inscriptionStatut: string;
-  //codePromo: string | null;
+  stage?: StageDetailsModel; // 🔥 Ajout de `stage`
 }

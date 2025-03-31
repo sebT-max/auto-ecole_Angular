@@ -2,8 +2,13 @@
   background-color: red;
   color: white;
   border: none;
-  padding: 10px;
+  padding: 16px;
   cursor: pointer;
+  height: 100px;
+  align-items: center;
+  font-size: 24px;
+  margin-top: 24px;
+  border-radius: 4px;
 }
 
 .close_button:hover {

@@ -8,15 +8,18 @@
         <p>{{ stage.dateDeStage| date:'dd/MM/yyyy' }}</p>
         <p>Accès: {{ stage.price }}€/personne</p>
       </div>
-
+<div style="float:right;">
       <!-- Bouton Détails pour afficher les informations -->
       <button class="details_button" (click)="selectStage(stage)">
         Détails
       </button>
+  <br/>
+  <br/>
 
       <!-- Bouton "Je m'inscris" -->
       <button class="inscription_button" [routerLink]="['/inscriptions/create',stage.id]" >Je m'inscris</button>
-    </div>
+</div>
+</div>
 
     <!-- Affichage des détails en dehors de la carte, sous la carte sélectionnée -->
     <div *ngIf="selectedStage?.id === stage.id">
