@@ -78,5 +78,11 @@ export class InscriptionService {
       this._authService.getAuthOptions()
     );
   }
+  getAllInscriptions(): Observable<InscriptionFormModel[]> {
+    return this._httpClient.get<InscriptionFormModel[]>(
+      `${API_URL}inscriptions/all`,
+      this._authService.getAuthOptions()
+    );
+  }
 }
 

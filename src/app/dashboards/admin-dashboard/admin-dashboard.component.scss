@@ -1,0 +1,28 @@
+td{
+  width:auto;
+}
+.dashboard_client{
+  width:80%;
+  margin:0 auto;
+  padding:20px;
+  h1{
+    background: #383f4e;
+  }
+  h2{
+    text-align:center;
+    padding:40px;
+    background: #383f4e;
+    color:white;
+  }
+  td{
+    text-align: center;
+    margin-top:20px;
+    height:20px;
+    padding:20px;
+  }
+  th{
+    border:1px solid black;
+    padding:20px;
+
+  }
+}

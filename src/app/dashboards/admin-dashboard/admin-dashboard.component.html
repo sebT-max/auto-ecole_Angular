@@ -1,1 +1,45 @@
-<p>admin-dashboard works!</p>
+<div class="dashboard_client">
+  <h1>Bienvenue sur votre espace admin</h1>
+
+  <h2>Inscriptions</h2>
+
+  <table *ngIf="inscriptions.length > 0; else noInscriptions">
+    <thead>
+      <tr>
+        <th>Personnes inscrites</th>
+        <th>Détails</th>
+        <th>Type de stage</th>
+        <th>Date d'inscription</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let inscription of inscriptions">
+      <td>
+        {{inscription.user?.lastname}}<br>
+        {{inscription.user?.firstname}}
+        </td>
+      <td>
+        <div style="text-align:left;" *ngIf="inscription.stage; else loading">
+          <strong>Ville :</strong> {{ inscription.stage.city }} <br>
+          <strong>Arrondissement :</strong> {{ inscription.stage.arrondissement }} <br>
+          <strong>Date :</strong> {{ inscription.stage.dateDeStage | date:'dd/MM/yyyy' }} <br>
+          <strong>Rue :</strong> {{ inscription.stage.street }} <br>
+          <strong>Organisation :</strong> {{ inscription.stage.organisation }}<br>
+          <strong>Prix :</strong> {{ inscription.stage.price | currency:'EUR' }}
+        </div>
+        <ng-template #loading>
+          <span>Chargement...</span>
+        </ng-template>
+      </td>
+      <td>{{ inscription.stageType }}</td>
+      <td>{{ inscription.dateOfInscription | date:'dd/MM/yyyy' }}</td>
+      <td>{{ inscription.inscriptionStatut }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noInscriptions>
+    <p>Aucune inscription trouvée.</p>
+  </ng-template>
+</div>

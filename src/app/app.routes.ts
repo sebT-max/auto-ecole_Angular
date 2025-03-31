@@ -105,5 +105,17 @@ export const routes: Routes = [
     loadComponent:()=>import('./dashboards/client-dashboard/client-dashboard.component').then(
       (c)=>c.ClientDashboardComponent,
     )
+  },
+  {
+    path: 'dashboard-admin',
+    loadComponent:()=>import('./dashboards/admin-dashboard/admin-dashboard.component').then(
+      (c)=>c.AdminDashboardComponent,
+    )
+  },
+  {
+    path: 'dashboard-company',
+    loadComponent:()=>import('./dashboards/company-dashboard/company-dashboard.component').then(
+      (c)=>c.CompanyDashboardComponent,
+    )
   }
 ];

@@ -39,8 +39,9 @@
 
   }@else{
     @if(userConnected()?.role?.name === 'ADMIN'){
-      <button routerLink="stages/all">Nos inscriptions</button>
-      <button routerLink="stages/create">Création stage</button>
+      <button routerLink="stages/all">Nos stages</button>
+      <button routerLink="stages/create">Créer unn stage</button>
+      <button routerLink="dashboard-admin">Mon espace admin</button>
       <hr>
       <button (click)="logout()">DÉCONNEXION</button>
     }
