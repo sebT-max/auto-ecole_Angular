@@ -17,7 +17,6 @@
 .card-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Assurez-vous qu'il y a un espace entre les cartes */
 }
 
 
@@ -30,27 +29,26 @@
 }
 
 .stage-details{
-  display:flex;
+  display: flex;
   justify-content: space-between;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.1215686275), #12aed0);
-  /* border: 1px solid rgba(255, 255, 255, 0.2); */
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  padding: 20px;
   width: 80%;
   color: #fff;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 1s ease;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 .stage_details_container1{
   border: 1px solid white;
   padding: 20px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background: white;
   color: #292c32;
   line-height: 24px;
+  height: 402px;
   hr{
     height:5px;
     background: #9c7d2c;
@@ -63,8 +61,8 @@
 #infos-stage-details{
   background-color: #f8a733;
   color: #383f4e;
-  padding: 28px;
+  padding: 52px 14px;
   line-height: 30px;
-  border-radius: 10px;
+  height: 402px;
 }
 

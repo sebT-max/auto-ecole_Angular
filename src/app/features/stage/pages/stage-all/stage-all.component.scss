@@ -2,20 +2,23 @@
   display: flex;
   justify-content: space-between;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.1215686275), #12aed0);
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   padding: 20px;
   width: 80%;
   color: #fff;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover{
+    border:2px solid white;
+  }
 }
 .inscription_button{
   background-color: #f8a633;
   width: 200px;
   font-size: 23px;
   align-items: center;
-  /* border-radius: 10px; */
   background-color: #f8a633;
   border: 1px solid white;
   color: #2d333b;
@@ -49,7 +52,6 @@
 .card-container {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Assurez-vous qu'il y a un espace entre les cartes */
 }
 
 .card_stages {
