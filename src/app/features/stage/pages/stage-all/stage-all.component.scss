@@ -1,8 +1,7 @@
 .card_stages{
-  display:flex;
+  display: flex;
   justify-content: space-between;
-  background: linear-gradient(135deg, #282828, #374b60, #12aed0);
-  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.1215686275), #12aed0);
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
   padding: 20px;
@@ -12,22 +11,24 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .inscription_button{
+  background-color: #f8a633;
   width: 200px;
-  font-size: 30px;
+  font-size: 23px;
   align-items: center;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   background-color: #f8a633;
   border: 1px solid white;
   color: #2d333b;
+  padding: 10px;
 }
 .details_button{
   width: 200px;
-  font-size: 30px;
+  font-size: 23px;
   align-items: center;
-  border-radius: 10px;
-  background-color: #f8a633;
+  background-color: #e0e4e9;
   border: 1px solid white;
   color: #2d333b;
+  padding: 10px;
 }
 .close_button {
   background-color: red;
@@ -59,7 +60,22 @@
 }
 
 h1{
-  background-color: #383f4e;
+  background-color: rgba(0, 0, 0, 0.16);
+}
+
+.card_stages_date{
+  height: 100px;
+  border: 1px solid #ccc;
+  align-items: baseline;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+}
+.card_stages_all_datas{
+  width:80%;
+  padding:20px;
 }
 
 

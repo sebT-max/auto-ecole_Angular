@@ -54,10 +54,11 @@ header:not(.scrolled) {
     margin-right:300px;
   }
   #logo_acf{
-    transform:scale(1);
+    transform: scale(1);
     position: relative;
-    bottom:-100px;
-    left:40px;
+    bottom: -60px;
+    left: 10px;
+    height: 200px;
   }
   button{
     border:1px solid white;
@@ -69,13 +70,15 @@ header.scrolled {
   background-color: #147286;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   .logo_header{
-    width:200px;
+    width:160px;
     margin-right:300px;
   }
   #logo_acf{
     transform:scale(0.75);
     position: relative;
     bottom:0px;
+    height:160px;
+    font-size:60px;
   }
   button{
     border:1px solid white;
@@ -130,21 +133,16 @@ nav a {
 .modal-container {
   position: absolute;
   top: 100%;
-  left: 0;
-  background: white;
-  border: 1px solid #ccc;
+  left: 0px;
+  background: #147286;
   padding: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   z-index: 100;
-  gap: 10px;
   opacity: 0;
-  transform: translateY(-10px);
 }
 
 .modal-container.show {
   opacity: 1;
-  transform: translate(0px,10px);
 }
 
 .btn {

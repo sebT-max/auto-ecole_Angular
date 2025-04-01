@@ -56,6 +56,7 @@ import { API_URL } from '../../core/constants/api-constant';
 import { InscriptionFormModel } from './models/inscription-form.model';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
+import {CreateInscriptionResponseBody} from './models/CreateInscriptionResponseBody';
 
 @Injectable({
   providedIn: 'root'
@@ -64,12 +65,29 @@ export class InscriptionService {
   private _httpClient: HttpClient = inject(HttpClient);
   private _authService: AuthService = inject(AuthService);
 
-  createInscription(inscription: InscriptionFormModel) {
-    return this._httpClient.post<InscriptionFormModel>(
+  createInscription(request: InscriptionFormModel, file: File | null): Observable<CreateInscriptionResponseBody> {
+    const formData = new FormData();
+
+    // Convertir en JSON string simple
+    formData.append('request', JSON.stringify(request));
+
+    // Si un fichier est fourni, l'ajouter avec le nom de paramètre attendu par le backend
+    if (file) {
+      formData.append('file', file);
+    }
+
+    // Afficher le contenu de formData pour debug
+    console.log('FormData envoyé:', request, file);
+
+    return this._httpClient.post<CreateInscriptionResponseBody>(
       `${API_URL}inscriptions/create`,
-      inscription,
-      this._authService.getAuthOptions()
+      formData,
+      { headers: this._authService.getAuthHeaders().delete('Content-Type') }
     );
+  }
+
+  getInscriptionPdfUrl(fileName: string): string {
+    return `${API_URL}inscriptions/file/${fileName}`;
   }
 
   getClientInscriptions(): Observable<InscriptionFormModel[]> {

@@ -17,6 +17,7 @@ export class HeaderComponent {
   userConnected = this.$_authService.currentUser;
   role: string | undefined = '';
 
+
   constructor() {
     console.log(this.userConnected());
   }

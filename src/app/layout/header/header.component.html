@@ -29,11 +29,11 @@
         (mouseover)="cancelCloseRegisterModal()"
         (mouseleave)="startCloseRegisterModal()"
       >
-        <button (click)="selectType('PARTICULIER', $event)">
-          <a routerLink="users/register" class="btn_register">Particulier</a>
+        <button (click)="selectType('PARTICULIER', $event)" routerLink="users/register" class="btn_register">
+          Particulier
         </button>
-        <button (click)="selectType('ENTREPRISE', $event)">
-          <a routerLink="company/register" class="btn_register">Entreprise</a>
+        <button (click)="selectType('ENTREPRISE', $event)" routerLink="company/register" class="btn_register">
+          Entreprise
         </button>
       </div>
     </div>
@@ -47,11 +47,11 @@
         (mouseover)="cancelCloseLoginModal()"
         (mouseleave)="startCloseLoginModal()"
       >
-        <button (click)="selectLoginType('PARTICULIER', $event)">
-          <a routerLink="users/login" class="btn_login">Particulier</a>
+        <button (click)="selectLoginType('PARTICULIER', $event)" routerLink="users/login" class="btn_login">
+         Particulier
         </button>
-        <button (click)="selectLoginType('ENTREPRISE', $event)">
-          <a routerLink="company/login" class="btn_login">Entreprise</a>
+        <button (click)="selectLoginType('ENTREPRISE', $event)" routerLink="company/login" class="btn_login">
+          Entreprise
         </button>
       </div>
     </div>
@@ -74,7 +74,7 @@
     }
     @if(userConnected()?.role?.name === 'ENTREPRISE' ){
       <button routerLink="stages/all">Nos stages</button>
-      <button routerLink="stages/all">Mon espace professionnel</button>
+      <button routerLink="dashboard-company">Mon espace professionnel</button>
       <button (click)="logout()">DÉCONNEXION</button>
     }
     @if(userConnected()?.role?.name === 'PARTICULIER'){

@@ -33,8 +33,9 @@
         </ng-template>
       </td>
       <td>{{ inscription.stageType }}</td>
-      <td>{{ inscription.dateOfInscription | date:'dd/MM/yyyy' }}</td>
       <td>{{ inscription.inscriptionStatut }}</td>
+     <!-- <button *ngIf="inscription.fileName" (click)="viewFile(inscription.fileName)">Voir la lettre</button>-->
+
     </tr>
     </tbody>
   </table>

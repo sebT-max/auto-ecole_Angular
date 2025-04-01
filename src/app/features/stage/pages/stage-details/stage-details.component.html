@@ -2,11 +2,21 @@
 <div class="stage-details">
   <div class="stage_details_container1">
   <h2>Stage à {{ stage!.city }}</h2>
-  <p>Rue: {{ stage!.street }}</p>
-  <p>Arrondissement: {{ stage!.arrondissement }}</p>
-    <p>Date: {{ stage?.dateDeStage | date:'dd/MM/yyyy' }}</p>
-    <p>Accès: {{ stage!.price }}€/personne</p>
+    <hr><br/>
+  <p>📍{{ stage!.street }}</p>
+  <p>{{ stage!.arrondissement }}ième arrondissement</p>
+    <p>📆 Le {{ stage?.dateDeStage | date:'d MMMM yyyy':'fr' }}</p>
+    <p>💰{{ stage!.price }}€/personne</p>
   </div>
-  <button class="close_button" (click)="close.emit()">Fermer</button>
+  <div id="infos-stage-details">
+    <ul>
+      <p>✓ Engagement ACF</p>
+      <p>✓ Organisme local et agrée</p>
+      <p>✓ Paiement des stages par carte bancaire et chèque</p>
+      <p>✓ Remboursement simple et rapide</p>
+    </ul>
+    Infos et renseignements
+    02 98 26 10 52
+  </div>
 </div>
 

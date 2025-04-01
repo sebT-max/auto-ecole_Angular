@@ -1,18 +1,23 @@
 <div class="margin_top_130"></div>
-<h1>Découvrez nos activités</h1>
+<h1>Choisissez votre stage</h1>
 <div class="card-container">
   @for (stage of stages; track stage.id) {
     <div class="card_stages">
-      <div>
+
+      <div class="card_stages_date">
+        {{ stage?.dateDeStage | date:'d MMMM yyyy':'fr' }}
+      </div>
+
+      <div class="card_stages_all_datas">
         <h2>{{ stage.city }}</h2>
-        <p>Arrondissement: {{ stage!.arrondissement }}</p>
-        <p>{{ stage.dateDeStage| date:'dd/MM/yyyy' }}</p>
+        <hr>
+        <p>{{ stage!.arrondissement }}ième arrondissement: </p>
         <p>Accès: {{ stage.price }}€/personne</p>
       </div>
 <div style="float:right;">
       <!-- Bouton Détails pour afficher les informations -->
       <button class="details_button" (click)="selectStage(stage)">
-        Détails
+        {{ selectedStage?.id === stage.id ? 'Fermer' : 'Détails' }}
       </button>
   <br/>
   <br/>

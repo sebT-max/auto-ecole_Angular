@@ -10,8 +10,8 @@
   background: #f8f9fa;
   padding: 20px;
   border-radius: 8px;
-  font-size: 32px;
-  line-height: 86px;
+  font-size: 20px;
+  line-height: 64px;
 }
 
 form {
@@ -23,4 +23,7 @@ form {
 
 #inscription_form{
 
+}
+.file-input {
+  display: none;
 }

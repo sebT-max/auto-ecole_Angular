@@ -19,7 +19,9 @@ export class AuthService {
   currentUser: WritableSignal<TokenModel | null> = signal<TokenModel | null>(
     null,
   );
-
+  currentCompany: WritableSignal<TokenModel | null> = signal<TokenModel | null>(
+    null,
+  );
   constructor() {
     const localStorageUser = localStorage.getItem('currentUser');
     if (localStorageUser) {
@@ -52,6 +54,7 @@ export class AuthService {
     return null;
   }
 
+
   // Méthode pour récupérer le header d'autorisation complet
   getAuthorizationHeader(): string {
     const token = this.getToken();
@@ -59,11 +62,25 @@ export class AuthService {
   }
 
   // Méthode pour récupérer les HttpHeaders avec Authorization
-  getAuthHeaders(): HttpHeaders {
+  /*getAuthHeaders(): HttpHeaders {
     const authHeader = this.getAuthorizationHeader();
     return authHeader
       ? new HttpHeaders().set('Authorization', authHeader)
       : new HttpHeaders();
+  }
+
+   */
+  getAuthHeaders(): HttpHeaders {
+    const userData = localStorage.getItem('currentUser');
+    const token = userData ? JSON.parse(userData).token : null;
+
+    if (!token) {
+      console.error('⚠️ Aucun token trouvé dans localStorage');
+      return new HttpHeaders(); // Retourne des headers vides si aucun token n'est trouvé
+    }
+
+    // Crée et retourne les en-têtes avec le token
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
   // Options HTTP avec headers d'autorisation

@@ -22,14 +22,17 @@ body{
   padding-top: 130px;
 
 }
+html {
+  scroll-behavior: smooth;
+}
 
 form{
   width: 60%;
   padding: 20px;
-  margin: 0 auto;
+  margin: 0px auto;
   text-align: center;
   color: white;
-  background: rgb(20 114 134);
+  background: rgba(0, 0, 0, 0.16);
 }
 form label{
   text-transform:uppercase;
@@ -202,6 +205,9 @@ h1{
     &:hover{
       background: red;
     }
+    .btn_register{
+      color:black;
+    }
   }
 }
 
@@ -231,6 +237,14 @@ h1{
 .margin_top_130{
   margin-top:130px;
 }
+#infos-stage-details{
+  background-color: #f8a733;
+  color: #383f4e;
+  padding: 28px;
+  line-height: 30px;
+  border-radius: 0px;
+}
+
 
 
 

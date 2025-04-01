@@ -4,6 +4,7 @@ import {StageService} from '../../features/stage/services/stage.service';
 import {InscriptionFormModel} from '../../features/inscription/models/inscription-form.model';
 import {StageDetailsModel} from '../../features/stage/models/stage-details-model';
 import {CurrencyPipe, DatePipe, NgForOf, NgIf} from '@angular/common';
+import {API_URL} from '../../core/constants/api-constant';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -39,7 +40,9 @@ export class AdminDashboardComponent implements OnInit  {
       }
     });
   }
-
+  viewFile(fileName: string) {
+    window.open(`${API_URL}inscriptions/file/${fileName}`, '_blank');
+  }
   loadStagesDetails(): void {
     this.inscriptions.forEach(inscription => {
       if (inscription.stageId != null && !this.stagesDetails[inscription.stageId]) {

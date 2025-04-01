@@ -6,16 +6,17 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { InscriptionService } from '../../inscription-services';
 import { InscriptionFormModel } from '../../models/inscription-form.model';
 import { TokenModel } from '../../../auth/models/token.model';
-import { Observable, of } from 'rxjs';
 import { StageDetailsModel } from '../../../stage/models/stage-details-model';
-import {NgForOf, NgIf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
+import {CreateInscriptionResponseBody} from '../../models/CreateInscriptionResponseBody';
 
 @Component({
   selector: 'app-inscription-create',
   imports: [
     ReactiveFormsModule,
     NgIf,
-    NgForOf
+    NgForOf,
+    DatePipe
   ],
   templateUrl: './inscription-create.component.html',
   styleUrls: ['./inscription-create.component.scss']
@@ -28,6 +29,8 @@ export class InscriptionCreateComponent implements OnInit {
   private readonly _router: Router = inject(Router);
 
   inscriptionCreationForm!: FormGroup;
+  selectedFile: File | null = null;  // Variable pour stocker le fichier sélectionné
+
 
   currentUser: WritableSignal<TokenModel | null> = signal<TokenModel | null>(null);
   stageId!: number;  // Stage ID est maintenant un nombre
@@ -67,17 +70,22 @@ export class InscriptionCreateComponent implements OnInit {
         }
       });
     }
-
     // Créer le formulaire avec les valeurs par défaut
     this.inscriptionCreationForm = this._fb.group({
       userId: [this.currentUser()?.id || '', Validators.required],
       stageId: [this.stageId || '', Validators.required],
       stageType: ['', Validators.required],
-      dateOfInscription: ['', Validators.required],
-      statutInscription:['', Validators.required]
+      inscriptionStatut: ['EN_ATTENTE', Validators.required] // Initialisé avec EN_ATTENTE par défaut
     });
   }
 
+  // Méthode pour gérer le changement de fichier
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
   handleInscription(): void {
     console.log(this.inscriptionCreationForm.value);
 
@@ -99,21 +107,23 @@ export class InscriptionCreateComponent implements OnInit {
 
     // Créer les données d'inscription à envoyer
     const inscriptionData: InscriptionFormModel = {
+      id: this.inscriptionCreationForm.value.id,
       userId: this.inscriptionCreationForm.value.userId,
       stageId: Number(this.inscriptionCreationForm.value.stageId),
       stageType: this.inscriptionCreationForm.value.stageType,
-      dateOfInscription: this.inscriptionCreationForm.value.dateOfInscription,
-      inscriptionStatut: this.inscriptionCreationForm.value.inscriptionStatut
+      inscriptionStatut: this.inscriptionCreationForm.value.inscriptionStatut,
+      lettrePdf: this.inscriptionCreationForm.value.lettrePdf,
     };
 
     // Soumettre l'inscription via le service
-    this._inscriptionService.createInscription(inscriptionData).subscribe({
-      next: (resp: InscriptionFormModel):void => {
+    this._inscriptionService.createInscription(inscriptionData, this.selectedFile).subscribe({
+      next: (resp: CreateInscriptionResponseBody): void => {
+        console.log('Inscription créée avec succès', resp);
         // Redirection après inscription réussie
         this._router.navigate(['/stages/all']);
       },
       error: (err) => {
-        console.error('Erreur lors de la création de inscription', err);
+        console.error('Erreur lors de la création de l\'inscription', err);
       }
     });
   }

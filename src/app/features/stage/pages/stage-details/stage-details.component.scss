@@ -1,6 +1,5 @@
 .close_button {
-  background-color: red;
-  color: white;
+  color: #383f4e;
   border: none;
   padding: 16px;
   cursor: pointer;
@@ -33,7 +32,7 @@
 .stage-details{
   display:flex;
   justify-content: space-between;
-  background: linear-gradient(135deg, #282828, #374b60, #12aed0);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.1215686275), #12aed0);
   /* border: 1px solid rgba(255, 255, 255, 0.2); */
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
@@ -46,8 +45,26 @@
 }
 
 .stage_details_container1{
-  border:1px solid white;
-  padding:20px;
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  color: #292c32;
+  line-height: 24px;
+  hr{
+    height:5px;
+    background: #9c7d2c;
+    margin-top:2px;
+  }
+  p{
+    margin-top:2px;
+  }
+}
+#infos-stage-details{
+  background-color: #f8a733;
+  color: #383f4e;
+  padding: 28px;
+  line-height: 30px;
   border-radius: 10px;
 }
 

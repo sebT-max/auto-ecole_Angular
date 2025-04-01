@@ -2,8 +2,6 @@
   <!-- Formulaire d'inscription -->
   <div>
   <form id="inscription_form" [formGroup]="inscriptionCreationForm" (ngSubmit)="handleInscription()">
-
-
       <label for="stageType">Type de Stage</label>
       <select id="stageType" formControlName="stageType">
         <option value="" disabled selected>Sélectionner un type de stage</option>
@@ -11,9 +9,11 @@
           {{ type.label }}
         </option>
       </select>
+    <div class="form-group">
+    <label for="lettre_48N">Chargez la lettre 48N (en PDF)</label>
 
-      <label for="dateOfInscription">Date d'inscription</label>
-      <input id="dateOfInscription" formControlName="dateOfInscription" type="date" required />
+      <input type="file" id="lettre_48N" class="form-control" (change)="onFileChange($event)" accept="application/pdf">
+      <small class="form-text text-muted">Format accepté : PDF uniquement</small>    </div>
     <button type="submit">S'inscrire</button>
   </form>
   </div>
@@ -23,8 +23,10 @@
   <div class="stage-details" *ngIf="stageDetails">
     <h2>Stage à {{ stageDetails.city }}</h2>
     <hr>
-    <p>Arrondissement: {{ stageDetails.arrondissement }}</p>
-    <p>Date: {{ stageDetails.dateDeStage }}</p>
-    <p>Accès: {{ stageDetails.price }}€/personne</p>
+    <p>📍Adresse: {{ stageDetails.street }}</p>
+    <p>{{ stageDetails.arrondissement }}ième arrondissement</p>
+    <p>📆 Le {{ stageDetails?.dateDeStage | date:'d MMMM yyyy':'fr' }}</p>
+    <p>Organisation: {{ stageDetails.organisation }}</p>
+    <p>💰Prix: {{ stageDetails.price }}€/personne</p>
   </div>
 </div>
