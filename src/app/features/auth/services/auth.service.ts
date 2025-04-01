@@ -76,7 +76,7 @@ export class AuthService {
 
     if (!token) {
       console.error('⚠️ Aucun token trouvé dans localStorage');
-      return new HttpHeaders(); // Retourne des headers vides si aucun token n'est trouvé
+      return new HttpHeaders(); // Retourne des headers vides si aucun token n'est touvé
     }
 
     // Crée et retourne les en-têtes avec le token

@@ -50,7 +50,7 @@ export class InscriptionService {
 }
 */
 
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpRequest} from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { API_URL } from '../../core/constants/api-constant';
 import { InscriptionFormModel } from './models/inscription-form.model';
@@ -65,6 +65,43 @@ export class InscriptionService {
   private _httpClient: HttpClient = inject(HttpClient);
   private _authService: AuthService = inject(AuthService);
 
+  /*createInscription(request: InscriptionFormModel, file: File | null): Observable<CreateInscriptionResponseBody> {
+    const formData = new FormData();
+
+    // Add data to FormData
+    formData.append('request', JSON.stringify(request));
+    if (file) {
+      formData.append('file', file);
+    }
+
+    // Get the auth token
+    const userData = localStorage.getItem('currentUser');
+    const token = userData ? JSON.parse(userData).token : null;
+
+    // Create minimal request options - ONLY include Authorization
+    const options = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+
+    // Log what we're sending
+    console.log('Sending FormData with token:', token);
+    const req = new HttpRequest('POST', `${API_URL}inscriptions/create`, formData, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      }),
+      reportProgress: true
+    });
+    console.log('Request headers:', req.headers);
+    return this._httpClient.post<CreateInscriptionResponseBody>(
+      `${API_URL}inscriptions/create`,
+      formData,
+      options
+    );
+  }
+
+   */
   createInscription(request: InscriptionFormModel, file: File | null): Observable<CreateInscriptionResponseBody> {
     const formData = new FormData();
 
@@ -76,13 +113,12 @@ export class InscriptionService {
       formData.append('file', file);
     }
 
-    // Afficher le contenu de formData pour debug
-    console.log('FormData envoyé:', request, file);
+    // Important: DO NOT set Content-Type header at all when sending FormData
+    // The browser will automatically set the correct boundary-included multipart/form-data Content-Type
 
     return this._httpClient.post<CreateInscriptionResponseBody>(
       `${API_URL}inscriptions/create`,
-      formData,
-      { headers: this._authService.getAuthHeaders().delete('Content-Type') }
+      formData
     );
   }
 

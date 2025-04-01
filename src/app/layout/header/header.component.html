@@ -5,21 +5,15 @@
     </div>
   </div>
   <div class="header_nav_links_container">
-  @if(!userConnected()){
-    <button routerLink="stages/all">Nos stages</button>
+    <button routerLink="stages/all">Stages</button>
     <button routerLink="stages-infos">Informations générales</button>
-    <button routerLink="code-promos/create">Créer un code promo</button>
-    <button routerLink="stages/all">Nos stages</button>
-
+    <!--<button routerLink="qui-sommes-nous ?">Qui nous sommes ? (SEO)</button>-->
     <!--
-    <button routerLink="b2b">Professionnels</button>
+      <button routerLink="b2b">Professionnels</button>
 
-    <button routerLink="statistiques-et-législation">Statistiques et législation (SEO)</button>
-    <button routerLink="qui-sommes-nous ?">Qui nous sommes ? (SEO)</button>
-    -->
-    <!--<button routerLink="users/login">Se connecter</button>-->
-    <!--<button routerLink="company/login">Se connecter</button>-->
-
+      <button routerLink="statistiques-et-législation">Statistiques et législation (SEO)</button>
+      -->
+    @if(!userConnected()){
     <div class="register-container" (mouseover)="openRegisterModal()" (mouseleave)="startCloseRegisterModal()">
       <button class="btn-register">S'inscrire</button>
       <div
@@ -56,32 +50,19 @@
       </div>
     </div>
 
-
-
-    <!--
-    <app-register-modal *ngIf="showModal" (closeModal)="toggleModal()"></app-register-modal>
-    -->
-
-
   }@else{
-
     @if(userConnected()?.role?.name === 'ADMIN'){
-      <button routerLink="stages/all">Nos stages</button>
-      <button routerLink="stages/create">Créer unn stage</button>
+      <button routerLink="stages/create">Créer un stage</button>
       <button routerLink="dashboard-admin">Mon espace admin</button>
-      <hr>
-      <button (click)="logout()">DÉCONNEXION</button>
+      <button routerLink="code-promos/create">Créer un code promo</button>
     }
     @if(userConnected()?.role?.name === 'ENTREPRISE' ){
-      <button routerLink="stages/all">Nos stages</button>
       <button routerLink="dashboard-company">Mon espace professionnel</button>
-      <button (click)="logout()">DÉCONNEXION</button>
     }
     @if(userConnected()?.role?.name === 'PARTICULIER'){
-      <button routerLink="stages/all">Nos stages</button>
       <button routerLink="dashboard-client">Mon espace client</button>
-      <button (click)="logout()">DÉCONNEXION</button>
     }
+      <button (click)="logout()">DÉCONNEXION</button>
   }
   </div>
 </header>
