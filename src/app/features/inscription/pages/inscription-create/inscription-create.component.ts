@@ -105,6 +105,7 @@ export class InscriptionCreateComponent implements OnInit {
       stageId: this.stageId
     });
 
+
     // Créer les données d'inscription à envoyer
     const inscriptionData: InscriptionFormModel = {
       id: this.inscriptionCreationForm.value.id,
@@ -126,5 +127,23 @@ export class InscriptionCreateComponent implements OnInit {
         console.error('Erreur lors de la création de l\'inscription', err);
       }
     });
+
+   /* const inscriptionData: InscriptionFormModel = {
+      userId: this.inscriptionCreationForm.value.userId,
+      stageId: Number(this.inscriptionCreationForm.value.stageId),
+      stageType: this.inscriptionCreationForm.value.stageType,
+      inscriptionStatut: this.inscriptionCreationForm.value.inscriptionStatut
+    };
+
+    // Pass the data object and the file to the service
+    this._inscriptionService.createInscription(inscriptionData, this.selectedFile || undefined).subscribe({
+      next: (resp: CreateInscriptionResponseBody): void => {
+        console.log('Inscription créée avec succès', resp);
+        this._router.navigate(['/stages/all']);
+      },
+      error: (err) => {
+        console.error('Erreur lors de la création de l\'inscription', err);
+      }
+    });*/
   }
 }

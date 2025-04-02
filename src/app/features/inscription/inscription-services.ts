@@ -101,7 +101,6 @@ export class InscriptionService {
     );
   }
 
-   */
   createInscription(request: any, file: File | null): Observable<CreateInscriptionResponseBody> {
     const formData = new FormData();
 
@@ -124,6 +123,47 @@ export class InscriptionService {
       formData
     );
   }
+
+   */
+
+  /*createInscription(request: InscriptionFormModel, file?: File): Observable<CreateInscriptionResponseBody> {
+    const formData = new FormData();
+
+    // Convertir l'objet request en JSON et l'ajouter comme "request"
+    formData.append("request", new Blob([JSON.stringify(request)], { type: "application/json" }));
+
+    // Ajouter le fichier s'il existe
+    if (file) {
+      formData.append("file", file, file.name);
+    }
+    return this._httpClient.post<CreateInscriptionResponseBody>(
+      `${API_URL}inscriptions/create`,
+      formData
+    );
+  }*/
+  createInscription(request: any, file: File | null): Observable<CreateInscriptionResponseBody> {
+    const formData = new FormData();
+
+    // Convertir en JSON string simple
+    formData.append('request', JSON.stringify(request));
+    for(let key in request) {
+      formData.append(key, request[key]);
+    }
+
+    // Si un fichier est fourni, l'ajouter avec le nom de paramètre attendu par le backend
+    if (file) {
+      formData.append('file', file);
+    }
+
+    // Important: DO NOT set Content-Type header at all when sending FormData
+    // The browser will automatically set the correct boundary-included multipart/form-data Content-Type
+
+    return this._httpClient.post<CreateInscriptionResponseBody>(
+      `${API_URL}inscriptions/create`,
+      formData
+    );
+  }
+
 
   getInscriptionPdfUrl(fileName: string): string {
     return `${API_URL}inscriptions/file/${fileName}`;

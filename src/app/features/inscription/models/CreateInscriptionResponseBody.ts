@@ -4,11 +4,10 @@ import {UserFormModel} from '../../auth/models/user-form.model';
 export interface CreateInscriptionResponseBody {
   message: string;
   id: number;
-  userId: number;
-  stageId: number;
-  stageType: string;
+  userId: number | null;
+  stageId: number | null;
+  stageType: string | null;
   inscriptionStatut: string;
-  lettrePdf?: string;
   stage?: StageDetailsModel;
   user?: UserFormModel;
 }

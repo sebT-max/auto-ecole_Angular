@@ -14,7 +14,7 @@
 
       <input type="file" id="lettre_48N" class="form-control" (change)="onFileChange($event)" accept="application/pdf">
       <small class="form-text text-muted">Format accepté : PDF uniquement</small>
-    <button type="submit">S'inscrire</button>
+    <button type="submit" [disabled]="inscriptionCreationForm.invalid">S'inscrire</button>
   </form>
   </div>
 
