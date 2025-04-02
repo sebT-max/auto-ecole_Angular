@@ -102,11 +102,14 @@ export class InscriptionService {
   }
 
    */
-  createInscription(request: InscriptionFormModel, file: File | null): Observable<CreateInscriptionResponseBody> {
+  createInscription(request: any, file: File | null): Observable<CreateInscriptionResponseBody> {
     const formData = new FormData();
 
     // Convertir en JSON string simple
     formData.append('request', JSON.stringify(request));
+    for(let key in request) {
+      formData.append(key, request[key]);
+    }
 
     // Si un fichier est fourni, l'ajouter avec le nom de paramètre attendu par le backend
     if (file) {

@@ -2,8 +2,8 @@
   <h1>Bienvenue sur votre espace admin</h1>
 
   <h2>Inscriptions</h2>
-
-  <table *ngIf="inscriptions.length > 0; else noInscriptions">
+  @if (inscriptions.length > 0) {
+  <table>
     <thead>
       <tr>
         <th>Personnes inscrites</th>
@@ -14,7 +14,8 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let inscription of inscriptions">
+    <tr>
+      @for(inscription of inscriptions;track inscription.id){
       <td>
         {{inscription.user?.lastname}}<br>
         {{inscription.user?.firstname}}
@@ -35,12 +36,15 @@
       <td>{{ inscription.stageType }}</td>
       <td>{{ inscription.inscriptionStatut }}</td>
      <!-- <button *ngIf="inscription.fileName" (click)="viewFile(inscription.fileName)">Voir la lettre</button>-->
-
+      }
     </tr>
     </tbody>
   </table>
+  }
+  @else{
 
   <ng-template #noInscriptions>
     <p>Aucune inscription trouvée.</p>
   </ng-template>
+  }
 </div>

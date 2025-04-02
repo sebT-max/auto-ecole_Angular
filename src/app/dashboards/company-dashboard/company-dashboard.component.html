@@ -2,8 +2,8 @@
   <h1>Bienvenue sur votre espace client</h1>
 
   <h2>Mes inscriptions</h2>
-
-  <table *ngIf="inscriptions.length > 0; else noInscriptions">
+  @if (inscriptions.length > 0) {
+  <table>
     <thead>
     <tr>
       <th>Détails</th>
@@ -32,8 +32,10 @@
     </tr>
     </tbody>
   </table>
-
-  <ng-template #noInscriptions>
-    <p>Aucune inscription trouvée.</p>
-  </ng-template>
+  }
+  @else{
+    <ng-template #noInscriptions>
+      <p>Aucune inscription trouvée.</p>
+    </ng-template>
+  }
 </div>

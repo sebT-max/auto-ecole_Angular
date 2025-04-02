@@ -91,7 +91,7 @@ export class AuthService {
   }
 
   register(user: RegisterFormModel) {
-    return this._httpClient.post<number>(`${API_URL}users/register`, user);
+    return this._httpClient.post<number>(`${API_URL}particulier/register`, user);
   }
 
   entrepriseRegister(entreprise: CompanyRegisterFormModel) {
