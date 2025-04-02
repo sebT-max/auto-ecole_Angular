@@ -50,7 +50,7 @@ export class CompanyRegisterComponent {
       acceptTerms: this.companyRegisterForm.get('acceptTerms')!.value,
       roleId:3
     };
-    console.log('EntrepriseRegisterFormModel', this.CompanyRegisterFormModel);
+    console.log('CompanyRegisterFormModel', this.CompanyRegisterFormModel);
 
     this.$_authService.entrepriseRegister(this.CompanyRegisterFormModel).subscribe({
       next: (datas:number) => {

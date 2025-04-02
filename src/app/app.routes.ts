@@ -72,13 +72,13 @@ export const routes: Routes = [
       ),
   },
 
-  {
+  /*{
     path: 'company/login',
     loadComponent: () =>
       import('./features/auth/pages/company-login/company-login.component').then(
         (c) => c.CompanyLoginComponent,
       ),
-  },
+  },*/
   {
     path: 'stages/all',
     loadComponent: () =>

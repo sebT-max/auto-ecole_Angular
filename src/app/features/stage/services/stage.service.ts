@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {inject, Injectable, signal, WritableSignal} from '@angular/core';
 import {TokenModel} from '../../auth/models/token.model';
 import {API_URL} from '../../../core/constants/api-constant';
@@ -40,6 +40,10 @@ export class StageService{
   }
   getStageById(stageId:number): Observable<StageDetailsModel> {
     return this._httpClient.get<StageDetailsModel>(`${API_URL}stages/${stageId}`);
+  }
+  getFilteredStages(searchTerm: string): Observable<StageDetailsModel[]> {
+    const params = new HttpParams().set('searchTerm', searchTerm);
+    return this._httpClient.get<StageDetailsModel[]>(`${API_URL}stages/search`, { params });
   }
 
 }

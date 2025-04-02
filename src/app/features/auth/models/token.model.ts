@@ -23,7 +23,7 @@ export interface TokenModel {
   lastname: string;
   firstname: string;
   email: string;
-  role?: { // Optionnel car les entreprises n'ont pas de rôles
+  role: {
     id: number;
     name: string;
     description: string;

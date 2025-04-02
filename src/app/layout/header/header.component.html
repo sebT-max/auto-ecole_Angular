@@ -32,7 +32,11 @@
       </div>
     </div>
 
-    <div class="login-container" (mouseover)="openLoginModal()" (mouseleave)="startCloseLoginModal()">
+    <button routerLink="users/login" class="btn_login">
+      Se connecter
+    </button>
+
+    <!--<div class="login-container" (mouseover)="openLoginModal()" (mouseleave)="startCloseLoginModal()">
       <button class="btn-login">Se connecter</button>
       <div
         *ngIf="showLoginModal"
@@ -48,9 +52,10 @@
           Entreprise
         </button>
       </div>
-    </div>
+    </div>-->
 
-  }@else{
+  }
+    @else{
     @if(userConnected()?.role?.name === 'ADMIN'){
       <button routerLink="stages/create">Créer un stage</button>
       <button routerLink="dashboard-admin">Mon espace admin</button>
